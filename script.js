@@ -197,3 +197,32 @@ window.onload = () => {
   cargarProductos();
   actualizarPedido();
 };
+function initMap() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        function (position) {
+          const ubicacion = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+          };
+
+          const mapa = new google.maps.Map(document.getElementById('mapa-usuario'), {
+            zoom: 16,
+            center: ubicacion
+          });
+
+          new google.maps.Marker({
+            position: ubicacion,
+            map: mapa,
+            title: 'Estás aquí'
+          });
+        },
+        function (error) {
+          console.warn("Error de geolocalización:", error.message);
+          alert("No se pudo obtener tu ubicación.");
+        }
+      );
+    } else {
+      alert("Tu navegador no admite geolocalización.");
+    }
+  }
