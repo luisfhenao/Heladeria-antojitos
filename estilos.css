@@ -1,0 +1,209 @@
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background: #f9f3e7;
+  color: #333;
+}
+
+section {
+  padding: 20px;
+  text-align: center;
+}
+
+h2 {
+  color: #e75480;
+  margin-bottom: 10px;
+}
+
+/* Estilo tipo Mercado Libre */
+.productos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.producto {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 15px;
+  width: 200px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease;
+}
+
+.producto:hover {
+  transform: scale(1.03);
+}
+
+.producto img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.producto h3 {
+  margin: 10px 0 5px;
+  color: #e75480;
+}
+
+.producto p {
+  margin: 0 0 10px;
+  font-weight: bold;
+  color: #333;
+}
+
+.producto button {
+  background-color: #e75480;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.producto button:hover {
+  background-color: #d1436d;
+}
+
+/* Modal */
+#modal {
+  display: none;
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  padding: 20px;
+  border: 2px solid #333;
+  z-index: 1000;
+}
+#formulario-pedido ul {
+  list-style: none;
+  padding: 0;
+  text-align: left;
+  max-width: 400px;
+  margin: 0 auto 20px;
+}
+
+#formulario-pedido li {
+  background: #fff;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+#formulario-pedido p {
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+#formulario-pedido button {
+  background-color: #e75480;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+#lista-pedido button.eliminar {
+  background: transparent;
+  border: none;
+  color: red;
+  font-size: 1.2em;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+#lista-pedido li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.producto label,
+.producto select {
+  display: block;
+  margin: 5px auto;
+}
+
+#modal {
+  transition: opacity 0.3s ease;
+  opacity: 0;
+  pointer-events: none;
+}
+
+#modal.activo {
+  opacity: 1;
+  pointer-events: auto;
+}
+/* ✨ Animación para lista del carrito */
+#lista-pedido li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  opacity: 1;
+  transform: translateX(0);
+  transition: all 0.3s ease;
+}
+
+/* Cuando se agrega (efecto entrada) */
+#lista-pedido li.agregado {
+  opacity: 0;
+  transform: translateX(20px);
+}
+
+/* Cuando se elimina (efecto salida) */
+#lista-pedido li.eliminado {
+  opacity: 0;
+  transform: translateX(-20px);
+}/* 🧊 Estado inicial oculto */
+#lista-pedido li {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.3s ease;
+}
+
+/* ✨ Entrada suave cuando se agrega */
+#lista-pedido li.agregado {
+  animation: fadeInSlide 0.4s ease forwards;
+}
+
+/* ❌ Salida suave cuando se elimina */
+#lista-pedido li.eliminado {
+  animation: fadeOutSlide 0.3s ease forwards;
+}
+
+@keyframes fadeInSlide {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOutSlide {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+.agregado {
+  animation: fadeInSlide 0.4s ease forwards;
+}
+
