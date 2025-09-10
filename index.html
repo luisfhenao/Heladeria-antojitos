@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Heladería “Dulce Frío”</title>
+  <link rel="stylesheet" href="estilos.css" />
+</head>
+<body>
+
+  <div id="menu-digital" class="productos">
+  <!-- Los productos se cargarán automáticamente con JavaScript -->
+</div>
+
+
+<!-- 3. Formulario de pedidos -->
+<section id="pedido">
+  <h2>Haz tu pedido</h2>
+  <div id="formulario-pedido">
+    <ul id="lista-pedido">
+      <!-- Los productos seleccionados se insertarán aquí -->
+    </ul>
+    <p id="total-pedido"></p>
+    <button onclick="enviarPedido()">Enviar por WhatsApp</button>
+
+  </div>
+</section>
+
+
+  <script src="script.js"></script>
+  <!-- 1. Ubicación en tiempo real -->
+<section id="ubicacion">
+  <h2>¿Dónde estamos ahora?</h2>
+
+  <!-- Mapa integrado con Google Maps -->
+  <iframe
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3979.2612173524276!2d-76.17201682930188!3d4.168974686533096!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e39c90038ecc73f%3A0xb5eb906c143f6934!2sHELADERIA%20ANTOJITOS!5e0!3m2!1ses!2sco!4v1757120679679!5m2!1ses!2sco"
+    width="100%" height="300" style="border:0;" allowfullscreen=""
+    loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+  </iframe>
+
+  <button onclick="mostrarModal()" style="margin-top: 10px;">Cómo llegar</button>
+
+  <div id="modal" style="
+      display:none;
+      position:fixed;
+      top:30%;
+      left:50%;
+      transform:translateX(-50%);
+      background:white;
+      padding:20px;
+      border:2px solid #333;
+      z-index:1000;">
+    <p>Elige aplicación de navegación:</p>
+    <a href="https://www.google.com/maps/dir/?api=1&destination=Cl.+12+%234-63,+Andaluc%C3%ADa,+Valle+del+Cauca,+Colombia" target="_blank">
+      Google Maps
+    </a><br>
+    <a href="https://waze.com/ul?q=Cl.+12+%234-63,+Andaluc%C3%ADa,+Valle+del+Cauca,+Colombia&navigate=yes" target="_blank">
+      Waze
+    </a><br><br>
+    <button onclick="cerrarModal()">Cancelar</button>
+  </div>
+</section>
+<!-- Toastify CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+<!-- Toastify JS -->
+<script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<button onclick="mostrarModal()">🛒 Carrito (<span id="contador-carrito">0</span>)</button>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+function mostrarModal() {
+  document.getElementById('modal').style.display = 'block';
+}
+function cerrarModal() {
+  document.getElementById('modal').style.display = 'none';
+}
+</script>
+
+
+
+</body>
+</html>
